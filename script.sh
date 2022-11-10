@@ -1,16 +1,12 @@
 #!/bin/bash
 
 date=$(date "+%y-%m-%d_%H:%M:%S")
+daten=$(date "+%u")
 
-mkdir /backup/tmp/
+mkdir -p /backup/daily/ /backup/weekly/
 
-if [ "$(ls -A /backup/tmp)" != "" ]; then
-    zip -r -9 "/backup/${date}_tmp.zip" /backup/tmp
-    rm -r /backup/tmp/*
+if [[daten -eq 7 ]]; then
+    rsync -rPu -e 'ssh -i /scripts/key -o "StrictHostKeyChecking no"' "${SSH_STR}:${PAT_TO_ORIG}" /backup/weekly
 fi
 
-rsync -az -P -e 'ssh -i /scripts/key -o "StrictHostKeyChecking no"' "${SSH_STR}:${PATH_TO_ORIG}" /backup/tmp
-
-zip -r -9 "/backup/${date}.zip" /backup/tmp
-
-rm -r /backup/tmp/*
+rsync -rPu -e 'ssh -i /scripts/key -o "StrictHostKeyChecking no"' "${SSH_STR}:${PAT_TO_ORIG}" /backup/daily

@@ -15,13 +15,13 @@ PATH_TO_ORIG=/path/on/remote # pat to folder wich has to be backed up
 **Dockerfile**
 
 ```
-FROM ubuntu:latest
+FROM archlinux:latest
 
-RUN apt update && apt -y install cron rsync ssh
+RUN pacman -Syy
 
-RUN (crontab -l ; echo "0 3 * * * /scripts/script.sh") 2>&1 | grep -v "no crontab" | sort | uniq | crontab -
+RUN pacman -S cron rsync openssh zip --noconfirm
 
-RUN cron
+RUN (crontab -l ; echo "0 2 * * * /scripts/script.sh") 2>&1 | grep -v "no crontab" | sort | uniq | crontab -
 
 CMD ["/bin/bash"]
 ```

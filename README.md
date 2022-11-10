@@ -2,7 +2,7 @@
 
 Container to run script with Rsync at 2:00 am.
 
-[Docker image on Docker Hub](https://registry.hub.docker.com/r/komelt/rsync-cron)
+[Docker image on Docker Hub](https://registry.hub.docker.com/r/komelt/rsync-cron)\
 [Source code on GitHub](https://github.com/KomelT/rsync-cron)
 
 **Mount**

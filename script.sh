@@ -8,7 +8,7 @@ mkdir -p /backup/daily/ /backup/weekly/ /backup/logs/
 
 echo "---- ${date} ----" >> /backup/logs/daily.log
 
-if [[daten -eq 7 ]]; then
+if [[$daten -eq 7 ]]; then
     echo "---- ${date} ----" >> /backup/logs/weekly.log
 
     rsync -rPu -e 'ssh -i /scripts/key -o "StrictHostKeyChecking no"' "${SSH_STR}:${PAT_TO_ORIG}" /backup/weekly

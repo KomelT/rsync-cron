@@ -9,7 +9,7 @@ if [ "$(ls -A /backup/tmp)" != "" ]; then
     rm -r /backup/tmp/*
 fi
 
-rsync -az -P -e 'ssh -i /scripts/key -o "StrictHostKeyChecking no"' "${SSH_STR}:${PAT_TO_ORIG}" /backup/tmp
+rsync -az -P -e 'ssh -i /scripts/key -o "StrictHostKeyChecking no"' "${SSH_STR}:${PATH_TO_ORIG}" /backup/tmp
 
 zip -r -9 "/backup/${date}.zip" /backup/tmp
 

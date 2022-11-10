@@ -3,7 +3,11 @@
 Container to run script with Rsync at 2:00 am.
 
 **Mount**
-`/scripts:/local/folder/with/script`
+
+```
+/scripts:/local/folder/with/script
+/backup:/location/to/backups/
+```
 
 **ENV**
 
